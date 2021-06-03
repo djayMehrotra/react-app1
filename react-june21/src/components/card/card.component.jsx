@@ -9,5 +9,8 @@ const Card = (props) => {
         </div>
      );
 }
- 
+ /* 
+    this is a repeated component
+    hence there is no map available and it is called repeatedly
+ */
 export default Card;

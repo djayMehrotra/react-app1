@@ -8,7 +8,8 @@ class App extends Component {
     super();
 
     this.state = {
-      monsters: [] 
+      monsters: [],
+      searchField: '' 
     }
   }
 
@@ -23,7 +24,18 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <CardList monsters={this.state.monsters} />
+        <input
+          type="search" 
+          placeholder="Search Monster"
+          onChange={ e => {
+            this.setState({searchField : e.target.value}, ()=>{console.log(this.state)}) //async behavior of setState
+          }}
+        />
+        <CardList monsters={this.state.monsters} /> 
+        {/* 
+          -earlier the mapping was involved here and that is move to the component
+          -the state is passed as an attribute to the component( which is props)
+        */}
       </div>
     );  
   }
@@ -31,7 +43,3 @@ class App extends Component {
 
 export default App;
 
-
-/* 
-1 - how to avoid callback hell?
-*/
