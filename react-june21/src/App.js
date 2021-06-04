@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 import { CardList } from './components/card-list/card-list.comoponent';
+import { SearchBox } from './components/search/search.component';
 
 class App extends Component {
   constructor() {
@@ -22,19 +23,23 @@ class App extends Component {
     });
   }
   render(){
+    const { monsters, searchField} = this.state;
+    const filteredMonsters = monsters.filter(monster => 
+        monster.name.toLowerCase().includes(searchField.toLowerCase())
+      );
+
     return (
       <div className="App">
-        <input
-          type="search" 
+        <SearchBox
           placeholder="Search Monster"
-          onChange={ e => {
-            this.setState({searchField : e.target.value}, ()=>{console.log(this.state)}) //async behavior of setState
-          }}
-        />
-        <CardList monsters={this.state.monsters} /> 
+          handleChange={ e => {
+            this.setState({searchField : e.target.value}, ()=>{console.log(this.state)}) 
+          }} />
+        <CardList monsters={filteredMonsters} /> 
         {/* 
           -earlier the mapping was involved here and that is move to the component
           -the state is passed as an attribute to the component( which is props)
+          -filteredd mosnters is passed
         */}
       </div>
     );  

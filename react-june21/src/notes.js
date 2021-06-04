@@ -3,5 +3,11 @@
 
 034--
 - why card and card-list are seprated? 
-      fairytale, monsters    
+      - fairytale, monsters    
+
+038--
+- what are fake/dumb events? 
+      -  <input onchange=myfunc()>
+      -  <input onChange={ x => {} }>
+- why we use under import { SearchBox } and sometime React?     
 */
