@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state = {
       monsters: [],
-      searchField: '' 
+      searchField: '',
+      count: 48 
     }
   }
 
@@ -40,6 +41,19 @@ class App extends Component {
           placeholder="Search Monster"
           handleChange={ this.handleChange } />
         <CardList monsters={filteredMonsters} /> 
+        
+        <span>{this.state.count}</span>
+        <br/>
+        {/* <button onClick={ ()=> {
+          this.setState({count: this.state.count + 1})
+          }
+          }>Click here to update</button> */}
+        <button onClick={() => {
+          this.setState((prevState, prevProps) => {
+            return {count: prevState.count + 1 }
+          }, 
+          () => console.log(this.state.count))
+        }}>Click here to update</button>  
         {/* 
           -earlier the mapping was involved here and that is move to the component
           -the state is passed as an attribute to the component( which is props)
