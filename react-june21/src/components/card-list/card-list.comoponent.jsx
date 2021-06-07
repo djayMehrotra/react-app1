@@ -13,7 +13,7 @@ export const CardList = (props) => {
                        card list will be one single type of comp holding card  
                     */
                 )
-            )};
+            )}
         </div>
      );
 }
